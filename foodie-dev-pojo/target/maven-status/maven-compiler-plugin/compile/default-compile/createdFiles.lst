@@ -3,6 +3,7 @@ com\imooc\pojo\bo\UserBO.class
 com\imooc\pojo\Carousel.class
 com\imooc\pojo\Orders.class
 com\imooc\pojo\ItemsSpec.class
+com\imooc\pojo\vo\ItemInfoVO.class
 com\imooc\pojo\ItemsComments.class
 com\imooc\pojo\ItemsParam.class
 com\imooc\pojo\UserAddress.class
