@@ -1,9 +1,9 @@
 ###########################################################
 #
-# web访问端口号 约定：8088
+# web访问端口号 约定：8089
 ############################################################
 server:
-  port: 8088
+  port: 8089
   tomcat:
     uri-encoding: UTF-8
   max-http-header-size: 80KB
@@ -48,3 +48,7 @@ mapper:
   mappers: com.imooc.my.mapper.MyMapper
   not-empty: false
   identity: MYSQL
+# 分页插件配置
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
