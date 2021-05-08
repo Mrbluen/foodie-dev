@@ -23,5 +23,8 @@ public interface ItemService {
     //根据商品id查询商品的评价等级
     public CommentLevelCountsVO queryCommentCounts(String itemId);
     //根据商品id查询商品的评价(分页)
-    public PagedGridResult queryPageComments(String itemId, Integer level, Integer page, Integer pageSize);
+    public PagedGridResult queryPagedComments(String itemId, Integer level, Integer page, Integer pageSize);
+
+    //搜索商品列表
+    public PagedGridResult searhItems(String keywords, String  sort, Integer page, Integer pageSize);
 }

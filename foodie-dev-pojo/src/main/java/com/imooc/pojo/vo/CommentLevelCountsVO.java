@@ -39,4 +39,14 @@ public class CommentLevelCountsVO {
     public void setBadCounts(Integer badCounts) {
         this.badCounts = badCounts;
     }
+
+    @Override
+    public String toString() {
+        return "CommentLevelCountsVO{" +
+                "totalCounts=" + totalCounts +
+                ", goodCounts=" + goodCounts +
+                ", normalCounts=" + normalCounts +
+                ", badCounts=" + badCounts +
+                '}';
+    }
 }

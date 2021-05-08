@@ -1,13 +1,9 @@
 package com.imooc.controller;
 
-import com.imooc.enums.YesOrNo;
+
 import com.imooc.pojo.*;
-import com.imooc.pojo.vo.CategoryVO;
 import com.imooc.pojo.vo.CommentLevelCountsVO;
 import com.imooc.pojo.vo.ItemInfoVO;
-import com.imooc.pojo.vo.NewItemsVO;
-import com.imooc.service.CarouselService;
-import com.imooc.service.CategoryService;
 import com.imooc.service.ItemService;
 import com.imooc.utils.IMOOCJSONResult;
 import com.imooc.utils.PagedGridResult;
@@ -69,7 +65,7 @@ public class ItemsController extends BaseController{
     }
 
 
-    @ApiOperation(value = "查询商品评价", notes = "查询商品评价", httpMethod = "GET")
+    @ApiOperation(value = "查询商品评论", notes = "查询商品评论", httpMethod = "GET")
     @GetMapping("/comments")
     public IMOOCJSONResult comments(
             @ApiParam(name = "itemId", value = "商品id", required = true)
@@ -85,15 +81,50 @@ public class ItemsController extends BaseController{
             return IMOOCJSONResult.errorMsg(null);
         }
 
-        CommentLevelCountsVO countsVO = itemService.queryCommentCounts(itemId);
-
-        if (page == null){
+        if (page == null) {
             page = 1;
         }
-        if (pageSize == null){
-            page = COMMENT_PAGE_SIZE;
+
+        if (pageSize == null) {
+            pageSize = COMMON_PAGE_SIZE;
         }
-        PagedGridResult grid = itemService.queryPageComments(itemId,level,page,pageSize);
+
+        PagedGridResult grid = itemService.queryPagedComments(itemId,
+                level,
+                page,
+                pageSize);
+
+        return IMOOCJSONResult.ok(grid);
+    }
+    @ApiOperation(value = "搜索商品列表", notes = "搜索商品列表", httpMethod = "GET")
+    @GetMapping("/search")
+    public IMOOCJSONResult search(
+            @ApiParam(name = "keywords", value = "关键字", required = true)
+            @RequestParam String keywords,
+            @ApiParam(name = "sort", value = "排序", required = false)
+            @RequestParam String sort,
+            @ApiParam(name = "page", value = "查询下一页的第几页", required = false)
+            @RequestParam Integer page,
+            @ApiParam(name = "pageSize", value = "分页的每一页显示的条数", required = false)
+            @RequestParam Integer pageSize) {
+
+        if (StringUtils.isBlank(keywords)) {
+            return IMOOCJSONResult.errorMsg(null);
+        }
+
+        if (page == null) {
+            page = 1;
+        }
+
+        if (pageSize == null) {
+            pageSize = PAGE_SIZE;
+        }
+
+        PagedGridResult grid = itemService.searhItems(keywords,
+                                                        sort,
+                                                        page,
+                                                        pageSize);
+
         return IMOOCJSONResult.ok(grid);
     }
 }

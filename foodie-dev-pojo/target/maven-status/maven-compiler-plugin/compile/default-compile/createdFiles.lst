@@ -13,6 +13,7 @@ com\imooc\pojo\Category.class
 com\imooc\pojo\OrderItems.class
 com\imooc\pojo\vo\CategoryVO.class
 com\imooc\pojo\vo\NewItemsVO.class
+com\imooc\pojo\vo\SearchItemsVO.class
 com\imooc\pojo\Stu.class
 com\imooc\pojo\vo\SubCategoryVO.class
 com\imooc\pojo\Users.class
