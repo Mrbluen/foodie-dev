@@ -4,6 +4,7 @@ package com.imooc.controller;
 import com.imooc.pojo.*;
 import com.imooc.pojo.vo.CommentLevelCountsVO;
 import com.imooc.pojo.vo.ItemInfoVO;
+import com.imooc.pojo.vo.ShopcartVO;
 import com.imooc.service.ItemService;
 import com.imooc.utils.IMOOCJSONResult;
 import com.imooc.utils.PagedGridResult;
@@ -157,5 +158,18 @@ public class ItemsController extends BaseController{
                 pageSize);
 
         return IMOOCJSONResult.ok(grid);
+    }
+    @ApiOperation(value = "根据商品规格ids查找最新的商品数据", notes = "根据商品规格ids查找最新的商品数据", httpMethod = "GET")
+    @GetMapping("/refresh")
+    public IMOOCJSONResult refresh(
+            @ApiParam(name = "itemSpecIds", value = "拼接的规格ids", required = true,example = "1003,1005,1009")
+            @RequestParam String itemSpecIds
+           ) {
+        if (StringUtils.isBlank(itemSpecIds)){
+            return IMOOCJSONResult.ok();
+        }
+     List<ShopcartVO> list = itemService.queryItemsBySpecIds(itemSpecIds);
+
+        return IMOOCJSONResult.ok(list);
     }
 }

@@ -32,4 +32,15 @@ public class ShopcatController {
         // System.out.println(shopcartBO);
         return IMOOCJSONResult.ok();
     }
+    @ApiOperation(value = "删除购物车中的商品",notes = "删除购物车中的商品",httpMethod = "POST")
+    @PostMapping("/del")
+    public IMOOCJSONResult del(@RequestParam String userId,
+                               @RequestParam String itemSpecId,
+                               HttpServletRequest request, HttpServletResponse response) {
+        if (StringUtils.isBlank(userId) || StringUtils.isBlank(itemSpecId)){
+            return IMOOCJSONResult.errorMsg("参数不能为空");
+        }
+        // TODO 前端用户在页面删除购物车中的商品，如果用户此时已经登录，则需要删除同步后端购物车中的商品
+        return IMOOCJSONResult.ok();
+    }
 }
