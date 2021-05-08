@@ -27,4 +27,6 @@ public interface ItemService {
 
     //搜索商品列表
     public PagedGridResult searhItems(String keywords, String  sort, Integer page, Integer pageSize);
+
+    public PagedGridResult searchItemsByThirdCat(Integer catId, String  sort, Integer page, Integer pageSize);
 }
