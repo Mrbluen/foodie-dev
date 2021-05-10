@@ -13,5 +13,8 @@ public interface AddressService {
     public void addNewAddress(AddressBO addressBO);
     //用户修改地址
     public void updateUserAddress(AddressBO addressBO);
+    //用户删除地址
+    public void deleteUserAddress(String userId,String addressId);
 
+    public void updateUserAddressToBeDefault(String userId,String addressId);
 }
