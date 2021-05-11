@@ -5,6 +5,7 @@ import com.imooc.pojo.UserAddress;
 import com.imooc.pojo.bo.AddressBO;
 import com.imooc.pojo.bo.SubmitOrderBO;
 import com.imooc.service.AddressService;
+import com.imooc.service.OrderService;
 import com.imooc.utils.IMOOCJSONResult;
 import com.imooc.utils.MobileEmailUtils;
 import io.swagger.annotations.Api;
@@ -30,17 +31,21 @@ public class OrdersController {
     * */
     @Autowired
     private AddressService addressService;
-
+    @Autowired
+    private OrderService orderService;
 
     @ApiOperation(value = "用户下单", notes = "用户下单", httpMethod = "POST")
     @PostMapping("/create")
         public IMOOCJSONResult create(@RequestBody SubmitOrderBO submitOrderBO) {
         //1.创建订单
+        orderService.createOrder(submitOrderBO);
         //2.创建订单以后，移除购物车的商品（已提交的）的商品
         //3.向支付中心发送订单，用于保存支付中心的订单数据
         if (submitOrderBO.getChoosedPayMethod() != PayMethod.WEIXIN.type &&
                 submitOrderBO.getChoosedPayMethod() != PayMethod.ALIPAY.type )
             return IMOOCJSONResult.errorMsg("支付方式不支持");
+
+
         return IMOOCJSONResult.ok();
         }
 

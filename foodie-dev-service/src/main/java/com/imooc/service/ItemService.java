@@ -32,4 +32,10 @@ public interface ItemService {
     public PagedGridResult searchItemsByThirdCat(Integer catId, String  sort, Integer page, Integer pageSize);
     //根据规格ids查询最新的购物车中商品数据（用于刷新渲染购物车中的商品数据）
     public List<ShopcartVO> queryItemsBySpecIds(String specIds);
+
+    public ItemsSpec queryItemSpecById(String specIds);
+
+    public String queryItemMainImgById(String itemId);
+
+    public void decreaseItemSpecStock(String specIds,int buyCounts);
 }

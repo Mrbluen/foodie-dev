@@ -3,6 +3,7 @@ package com.imooc.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.imooc.enums.CommentLevel;
+import com.imooc.enums.YesOrNo;
 import com.imooc.mapper.*;
 import com.imooc.pojo.*;
 import com.imooc.pojo.vo.CommentLevelCountsVO;
@@ -168,5 +169,32 @@ public class ItemServiceImpl implements ItemService {
         Collections.addAll(specIdslist,ids);
 
         return itemsMapperCustom.queryItemsBySpecIds(specIdslist);
+    }
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public ItemsSpec queryItemSpecById(String specIds) {
+        return itemsSpecMapper.selectByPrimaryKey(specIds);
+    }
+
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public String queryItemMainImgById(String itemId) {
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(itemId);
+        itemsImg.setIsMain(YesOrNo.YES.type);
+
+        ItemsImg result = itemsImgMapper.selectOne(itemsImg);
+
+        return result != null ? result.getUrl() : "";
+    }
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void decreaseItemSpecStock(String specIds, int buyCounts) {
+        //分布式锁
+        int res = itemsMapperCustom.decreaseItemSpecStock(specIds,buyCounts);
+        if (res != 1){
+            throw new RuntimeException("订单创建失败，原因：库产不足！");
+        }
     }
 }
