@@ -13,12 +13,13 @@ import com.imooc.service.OrderService;
 
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 import java.util.Date;
 import java.util.List;
-
+@Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrdersMapper ordersMapper;
