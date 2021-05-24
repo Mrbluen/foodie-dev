@@ -1,20 +1,17 @@
 package com.imooc.controller;
 
 import com.imooc.enums.PayMethod;
-import com.imooc.pojo.UserAddress;
-import com.imooc.pojo.bo.AddressBO;
 import com.imooc.pojo.bo.SubmitOrderBO;
 import com.imooc.service.AddressService;
 import com.imooc.service.OrderService;
 import com.imooc.utils.IMOOCJSONResult;
-import com.imooc.utils.MobileEmailUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.annotation.Resource;
+
 
 //@Controller
 @Api(value = "订单相关",tags = {"订单相关的api接口"})

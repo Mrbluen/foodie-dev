@@ -13,12 +13,13 @@ import com.imooc.service.OrderService;
 
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 import java.util.Date;
 import java.util.List;
-
+@Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrdersMapper ordersMapper;
@@ -75,12 +76,12 @@ public class OrderServiceImpl implements OrderService {
              ) {
 
             //TODO 整合redis,商品购买数量重新从购物车中获取
-            int buyCount = 1;
+            int buyCounts = 1;
 
             //2.1根据规格id，查询规格的具体信息，主要获取价格信息
             ItemsSpec itemsSpec = itemService.queryItemSpecById(itemSpecId);
-            totalAmount += itemsSpec.getPriceNormal() * buyCount;
-            realPayAmount += itemsSpec.getPriceDiscount() *buyCount;
+            totalAmount += itemsSpec.getPriceNormal() * buyCounts;
+            realPayAmount += itemsSpec.getPriceDiscount() *buyCounts;
 
             //2.2根据商品id，获得商品的信息以及商品图片
             String itemId = itemsSpec.getItemId();
@@ -95,21 +96,18 @@ public class OrderServiceImpl implements OrderService {
             subOrderItems.setItemId(itemId);
             subOrderItems.setItemName(items.getItemName());
             subOrderItems.setItemImg(imgUrl);
-            subOrderItems.setBuyCounts(buyCount);
+            subOrderItems.setBuyCounts(buyCounts);
             subOrderItems.setItemSpecId(itemSpecId);
             subOrderItems.setItemSpecName(itemsSpec.getName());
             subOrderItems.setPrice(itemsSpec.getPriceDiscount());
-
             orderItemsMapper.insert(subOrderItems);
             //2.4用户提交订单后扣除相应的库存
-            itemService.decreaseItemSpecStock(itemSpecId,buyCount);
+            itemService.decreaseItemSpecStock(itemSpecId,buyCounts);
         }
-
             newOrder.setTotalAmount(totalAmount);
             newOrder.setRealPayAmount(realPayAmount);
-
             ordersMapper.insert(newOrder);
-        //3.保存订单状态
+            //3.保存订单状态
             OrderStatus waitPayOrderStatus = new OrderStatus();
             waitPayOrderStatus.setOrderId(orderId);
             waitPayOrderStatus.setOrderStatus(OrderStatusEnum.WAIT_PAY.type);
