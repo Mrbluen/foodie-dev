@@ -3,6 +3,8 @@ package com.imooc.controller;
 import com.imooc.enums.OrderStatusEnum;
 import com.imooc.enums.PayMethod;
 import com.imooc.pojo.bo.SubmitOrderBO;
+import com.imooc.pojo.vo.MerchantOrdersVO;
+import com.imooc.pojo.vo.OrderVO;
 import com.imooc.service.AddressService;
 import com.imooc.service.OrderService;
 import com.imooc.utils.CookieUtils;
@@ -41,7 +43,11 @@ public class OrdersController extends BaseController{
         public IMOOCJSONResult create(@RequestBody SubmitOrderBO submitOrderBO,
                                       HttpServletResponse response, HttpServletRequest request) {
         //1.创建订单
-        String orderId =  orderService.createOrder(submitOrderBO);
+        OrderVO orderVO =  orderService.createOrder(submitOrderBO);
+        String orderId = orderVO.getOrderId();
+        MerchantOrdersVO merchantOrdersVO = orderVO.getMerchantOrdersVO();
+        merchantOrdersVO.setReturnUrl(payReturnUrl);
+
         //2.创建订单以后，移除购物车的商品（已提交的）的商品
         //TODO 整合redis之后，完善购物车中的已结算的商品
         //CookieUtils.setCookie(request,response,FOODIE_SHOPCART,"",true);
