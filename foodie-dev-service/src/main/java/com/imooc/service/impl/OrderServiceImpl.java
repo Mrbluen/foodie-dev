@@ -13,6 +13,7 @@ import com.imooc.service.AddressService;
 import com.imooc.service.ItemService;
 import com.imooc.service.OrderService;
 
+import com.imooc.utils.DateUtil;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -137,4 +138,36 @@ public class OrderServiceImpl implements OrderService {
 
         orderStatusMapper.updateByPrimaryKeySelective(paidStatus);
     }
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public OrderStatus queryOrdersStatusInfo(String orderId) {
+        return orderStatusMapper.selectByPrimaryKey(orderId);
+    }
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void closeOrder() {
+        //超时关闭交易
+        OrderStatus queryOrder = new OrderStatus();
+        queryOrder.setOrderStatus(OrderStatusEnum.WAIT_PAY.type);
+        List<OrderStatus> list = orderStatusMapper.select(queryOrder);
+        for (OrderStatus os:list
+             ) {
+            Date createdTime = os.getCreatedTime();
+
+            int days = DateUtil.daysBetween(createdTime,new Date());
+            if (days >=1 ){
+                //超过一天关闭订单
+                doCloseOrder(os.getOrderId());
+            }
+        }
+    }
+        @Transactional(propagation = Propagation.REQUIRED)
+        void doCloseOrder(String orderId){
+            OrderStatus close = new OrderStatus();
+            close.setOrderId(orderId);
+            close.setOrderStatus(OrderStatusEnum.CLOSE.type);
+            close.setCloseTime(new Date());
+            orderStatusMapper.updateByPrimaryKeySelective(close);
+    }
+
 }

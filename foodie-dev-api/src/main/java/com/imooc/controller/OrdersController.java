@@ -1,6 +1,7 @@
 package com.imooc.controller;
 
 import com.imooc.enums.OrderStatusEnum;
+import com.imooc.pojo.OrderStatus;
 import com.imooc.pojo.bo.SubmitOrderBO;
 import com.imooc.pojo.vo.MerchantOrdersVO;
 import com.imooc.pojo.vo.OrderVO;
@@ -72,14 +73,19 @@ public class OrdersController extends BaseController{
         }
         return IMOOCJSONResult.ok(orderId);
 
-//        if (submitOrderBO.getChoosedPayMethod() != PayMethod.WEIXIN.type &&
-//                submitOrderBO.getChoosedPayMethod() != PayMethod.ALIPAY.type )
-//            return IMOOCJSONResult.errorMsg("支付方式不支持");
-//        return IMOOCJSONResult.ok(orderId);
+        //        if (submitOrderBO.getChoosedPayMethod() != PayMethod.WEIXIN.type &&
+        //                submitOrderBO.getChoosedPayMethod() != PayMethod.ALIPAY.type )
+        //            return IMOOCJSONResult.errorMsg("支付方式不支持");
+        //        return IMOOCJSONResult.ok(orderId);
         }
     @PostMapping("/notifyMerchantOrderPaid")
     public Integer notifyMerchantOrderPaid(String merchantOrderId){
         orderService.updateOrderStatus(merchantOrderId, OrderStatusEnum.WAIT_DELIVER.type);
         return HttpStatus.OK.value();
+    }
+    @PostMapping("/getPaidOrderInfo")
+    public IMOOCJSONResult getPaidOrderInfo(String orderId){
+        OrderStatus orderStatus = orderService.queryOrdersStatusInfo(orderId);
+        return IMOOCJSONResult.ok(orderStatus);
     }
 }
