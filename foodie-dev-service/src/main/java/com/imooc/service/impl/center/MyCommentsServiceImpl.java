@@ -34,8 +34,8 @@ public class MyCommentsServiceImpl extends BaseService implements MyCommentsServ
 
     @Autowired
     public OrdersMapper ordersMapper;
-
     @Autowired
+
     public OrderStatusMapper orderStatusMapper;
 
     @Autowired

@@ -19,6 +19,7 @@ com\imooc\pojo\vo\MySubOrderItemVO.class
 com\imooc\pojo\Orders.class
 com\imooc\pojo\ItemsSpec.class
 com\imooc\pojo\vo\ItemCommentVO.class
+com\imooc\pojo\vo\OrderStatusCountsVO.class
 com\imooc\pojo\vo\ItemInfoVO.class
 com\imooc\pojo\ItemsComments.class
 com\imooc\pojo\ItemsParam.class

@@ -6,6 +6,7 @@ D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\PassportControl
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\config\Swagger2.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\IndexController.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\config\OrderJob.java
+D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\center\MyCommentsController.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\exception\CustomExceptionHandler.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\AddressController.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\StuFooController.java
