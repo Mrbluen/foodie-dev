@@ -19,6 +19,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/META-INF/resources/")//映射swagger2
                 .addResourceLocations("file:/workspaces/images");//映射静态本地资源
-
     }
 }
