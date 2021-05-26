@@ -95,7 +95,10 @@ public class MyOrdersController extends BaseController {
             if (checkResult.getStatus() != HttpStatus.OK.value()){
                 return checkResult;
             }
-
+            boolean res = myOrdersService.updateReceiveOrderStatus(orderId);
+            if (!res){
+                return IMOOCJSONResult.errorMsg("订单确认收货失败");
+            }
         return IMOOCJSONResult.ok();
     }
 
@@ -119,7 +122,10 @@ public class MyOrdersController extends BaseController {
         Orders order = myOrdersService.queryMyOrder(userId,orderId);
         if(order == null){
             return IMOOCJSONResult.errorMsg("订单不存在");
-
+        }
+        boolean res = myOrdersService.deleteOrder(userId,orderId);
+        if (!res){
+            return IMOOCJSONResult.errorMsg("订单删除失败");
         }
         return IMOOCJSONResult.ok();
     }

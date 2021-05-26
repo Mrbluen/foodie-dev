@@ -24,4 +24,22 @@ public interface MyOrdersService {
      * @return
      */
     public Orders queryMyOrder(String userId, String orderId);
+    /**
+     * 更新我的订单-》确认收货
+     *
+     * @param orderId
+
+     * @return
+     */
+    public boolean updateReceiveOrderStatus(String orderId);
+
+
+    /**
+     * 删除我的订单
+     *
+     * @param userId
+     * @param orderId
+     * @return
+     */
+    public boolean deleteOrder(String orderId,String userId);
 }
