@@ -5,6 +5,7 @@ D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\PassportControl
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\config\Swagger2.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\IndexController.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\config\OrderJob.java
+D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\exception\CustomExceptionHandler.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\AddressController.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\StuFooController.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\OrdersController.java
@@ -13,5 +14,6 @@ D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\ItemsController
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\ShopcatController.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\aspect\ServiceLogAspect.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\center\CenterController.java
+D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\resource\FileUpload.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\config\CorsConfig.java
 D:\demo\foodie\foodie-dev-api\src\main\java\com\imooc\controller\center\CenterUserController.java

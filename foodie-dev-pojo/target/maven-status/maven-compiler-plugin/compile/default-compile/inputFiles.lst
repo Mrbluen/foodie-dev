@@ -6,6 +6,7 @@ D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\bo\AddressBO.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\bo\center\OrderItemsCommentBO.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\Stu.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\bo\UserBO.java
+D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\MySubOrderItemVO.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\SearchItemsVO.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\ItemsParam.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\ItemsSpec.java
@@ -15,6 +16,7 @@ D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\ItemInfoVO.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\ItemsImg.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\Category.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\Items.java
+D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\MyOrdersVO.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\ItemCommentVO.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\NewItemsVO.java
 D:\demo\foodie\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\ShopcartVO.java
