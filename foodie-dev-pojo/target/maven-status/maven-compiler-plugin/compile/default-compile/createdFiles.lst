@@ -26,6 +26,7 @@ com\imooc\pojo\UserAddress.class
 com\imooc\pojo\ItemsImg.class
 com\imooc\pojo\Category.class
 com\imooc\pojo\bo\center\OrderItemsCommentBO.class
+com\imooc\pojo\vo\MyCommentVO.class
 com\imooc\pojo\Stu.class
 com\imooc\pojo\vo\SubCategoryVO.class
 com\imooc\pojo\vo\MerchantOrdersVO.class
