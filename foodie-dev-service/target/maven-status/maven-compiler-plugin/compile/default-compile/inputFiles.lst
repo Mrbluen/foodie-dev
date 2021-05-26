@@ -6,6 +6,7 @@ D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\CategoryServic
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\impl\AddressServiceImpl.java
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\OrderService.java
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\AddressService.java
+D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\center\MyOrdersService.java
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\impl\CarouselServiceImpl.java
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\impl\ItemServiceImpl.java
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\StuService.java
@@ -13,4 +14,5 @@ D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\center\CenterU
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\CarouselService.java
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\impl\center\CenterUserServiceImpl.java
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\ItemService.java
+D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\impl\center\MyOrdersServiceImpl.java
 D:\demo\foodie\foodie-dev-service\src\main\java\com\imooc\service\UserService.java
