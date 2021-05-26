@@ -1,8 +1,8 @@
 package com.imooc.controller.center;
-
 import com.imooc.controller.BaseController;
 import com.imooc.pojo.Users;
 import com.imooc.pojo.bo.center.CenterUserBO;
+import com.imooc.resource.FileUpload;
 import com.imooc.service.center.CenterUserService;
 import com.imooc.utils.CookieUtils;
 import com.imooc.utils.IMOOCJSONResult;
@@ -17,7 +17,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -34,6 +33,9 @@ public class CenterUserController extends BaseController {
     @Autowired
     private CenterUserService centerUserService;
 
+    @Autowired
+    private FileUpload fileUpload;
+
     @ApiOperation(value = "修改用户头像",notes = "修改用户头像",httpMethod = "POST")
     @PostMapping("uploadFace")
     public IMOOCJSONResult uploadFace(@ApiParam(name = "userId",value ="用户Id", required = true)
@@ -43,7 +45,8 @@ public class CenterUserController extends BaseController {
                                   HttpServletRequest request,
                                   HttpServletResponse response) {
             //定义头像保存地址
-            String fileSpace = IMAGE_USER_FACE_LOCATION;
+            //String fileSpace = IMAGE_USER_FACE_LOCATION;
+            String fileSpace = fileUpload.getImageUserFaceLocation();
             //在路径上为每一个用户添加userid，用于区分不同用户上传
             String uploadPathPrefix = File.separator + userId;
             if (file != null){
@@ -84,13 +87,9 @@ public class CenterUserController extends BaseController {
                         }
                     }
                 }
-
             }else {
                 return IMOOCJSONResult.errorMsg("头像上传不能为空");
             }
-
-
-
             return IMOOCJSONResult.ok();
         }
 
