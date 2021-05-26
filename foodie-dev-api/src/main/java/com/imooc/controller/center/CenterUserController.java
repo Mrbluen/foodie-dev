@@ -58,6 +58,11 @@ public class CenterUserController extends BaseController {
                     String fileNameArr[] = fileName.split("\\.");
                     //获取文件名后缀
                     String suffix = fileNameArr[fileNameArr.length - 1];
+                    //后端对于图片格式的校验
+                    if (!suffix.equalsIgnoreCase("png")&& !suffix.equalsIgnoreCase("jpeg")&&
+                            !suffix.equalsIgnoreCase("jpg")){
+                        return IMOOCJSONResult.errorMsg("图片格式不正确");
+                    }
                     //face-{userid}.png
                     //文件名重组
                     String newFileName = "face-" + userId + "." + suffix;
