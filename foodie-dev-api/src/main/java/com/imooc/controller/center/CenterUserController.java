@@ -5,6 +5,7 @@ import com.imooc.pojo.bo.center.CenterUserBO;
 import com.imooc.resource.FileUpload;
 import com.imooc.service.center.CenterUserService;
 import com.imooc.utils.CookieUtils;
+import com.imooc.utils.DateUtil;
 import com.imooc.utils.IMOOCJSONResult;
 import com.imooc.utils.JsonUtils;
 import io.swagger.annotations.Api;
@@ -62,6 +63,9 @@ public class CenterUserController extends BaseController {
                     String newFileName = "face-" + userId + "." + suffix;
                     //上传头像最终保存地址
                     String finalFacePath = fileSpace + uploadPathPrefix + File.separator + newFileName;
+                    //用于提供给web服务的地址
+                    uploadPathPrefix += ("/" + newFileName);
+
                     File outFile = new File(finalFacePath);
                     if (outFile.getParentFile() != null){
                         //创建文件夹
@@ -90,6 +94,18 @@ public class CenterUserController extends BaseController {
             }else {
                 return IMOOCJSONResult.errorMsg("头像上传不能为空");
             }
+            //更新到用户头像到数据库
+            //获取图片服务地址
+            String imageServerUrl = fileUpload.getImageServerUrl();
+            //加上时间戳，使前端及时刷新,
+            String finalUserFaceUrl = imageServerUrl + uploadPathPrefix + "?t" + DateUtil.getCurrentDateString(DateUtil.DATE_PATTERN);
+            Users userResult = centerUserService.updateUserFace(userId,finalUserFaceUrl);
+
+            userResult = setNullProperty(userResult);
+            //更新cookie
+            CookieUtils.setCookie(request, response, "user",
+                JsonUtils.objectToJson(userResult), true);
+            // TODO 要改，整合分布式会话
             return IMOOCJSONResult.ok();
         }
 
